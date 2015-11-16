@@ -1,0 +1,31 @@
+<section>
+    <div class="panel panel-primary">
+      <div class="panel-body">
+      <div class="row invoice-list">
+          <div class="col-lg-4 col-sm-4">
+            <p>
+              <strong>Task:</strong>
+              <%= @leave.task %>
+            </p>
+        </div>
+        <div class="col-lg-4 col-sm-4">
+          <p>
+          <strong>Leave From:</strong>
+          <%= @leave.leave_from %>
+        </p>
+      </div>
+      <div class="col-lg-4 col-sm-4">
+      <p>
+        <strong>Leave To:</strong>
+        <%= @leave.leave_to %>
+      </p>
+    </div>
+  </div>
+</div>
+<p>
+<div class ="text-center">
+<strong>Calculated days of leave</strong>
+
+  <%= @leave.leave_to - @leave.leave_from %>
+</div>
+</p>

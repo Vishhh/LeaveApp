@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Leave App</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application', media: 'all' %>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <%= csrf_meta_tags %>
+  
+</head>
+<body>
+<header>
+<a href="" class="logo" >Leave <span>Application</span> <div class="small">(Alfa!)</div></a>
+  <div class= "top-nav">
+    <ul class="nav pull-right top-menu">
+      <li><input type="text" class="form-control search"></li>
+      <% if user_signed_in? %>
+        <li class="dropdown">          
+          <a data-toggle="dropdown" class="dropdown-toggle current_user_nav" href="#">
+          <span class="username"></span>
+          <b class="caret"></b></a>
+          <ul class="dropdown-menu extended logout">
+          <div class="log-arrow-up"></div>
+            <li><%#= link_to(edit_user_path(current_user.id)) do %>
+              <i class="fa fa-cog"></i> Setting<%# end %>
+            </li>
+            <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+            </li>
+          </ul>
+        </li>
+      <%end%>
+    </ul>
+  </div>
+</header>
+
+<!-- <header class="header white-bg">
+<div class="sidebar-toggle-box">
+    <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div> -->
+<!-- </div> -->
+
+<aside><br/><br/><br/>
+  <div><ul><li>
+    <a href="#">
+      <i class="fa fa-dashboard"></i>
+      <span>Dashboard</span>
+    </a></li>
+    <% if current_user && current_user.has_role?(:admin) %>
+    <%= render :partial => 'layouts/admin_menu'%>
+    <% elsif current_user && current_user.has_role?(:employee) %>
+    <%= render :partial => 'layouts/employee_menu'%>
+    <%end%></ul>
+  </div>
+</aside>
+
+    <section id="main-content">
+      <section class="wrapper site-min-height">
+          <% if notice %>
+          <p class="alert alert-success"><%= notice %></p>
+          <% end %>
+          <% if alert %>
+          <p class="alert alert-danger"><%= alert %></p>
+          <% end %>
+          <%= yield %>
+      </section>
+    </section>
+  </section>
+  </body>
+</html>

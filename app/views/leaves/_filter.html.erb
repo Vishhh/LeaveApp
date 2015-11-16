@@ -1,0 +1,30 @@
+<%= form_for :leaves do |f| %>
+<div class="row">
+  <div class="col-lg-10">
+    <div class="row">
+      <div class="col-lg-10" id="example_filter">
+        <div class="row search-row">
+          <div class="col-md-6 pull-left">
+            <% if current_user && current_user.has_role?(:admin) %>
+            <%#= link_to 'New Invoice', new_invoice_path, { :class => 'btn btn-success' } %>
+            <% elsif current_user && current_user.has_role?(:employee) %>
+            <%#= link_to 'New Invoice', new_invoice_path, { :class => 'btn btn-success' } %>
+            <% end %>
+          </div>
+          <div class="col-lg-6">
+            <div class="row">
+              <div class="col-md-9">
+              <%= link_to 'Leave Application', new_leafe_path  %>
+         
+                <input type="text" class="form-control search">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%# add an automated spinner to your form when the list is refreshed %>
+<%= render_filterrific_spinner %>
+<% end %>

@@ -1,0 +1,7 @@
+<% if user_signed_in? %>
+	<div><%= link_to 'Sign out', destroy_user_session_path ,:method => 'delete' %></div></br>
+<% end %>
+
+<% if employee_signed_in? %>
+	<div><%= link_to 'Sign out', destroy_employee_session_path ,:method => 'delete' %></div></br>
+<% end %>
